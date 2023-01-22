@@ -1,0 +1,18 @@
+@import "./pages/DahBoard.scss";
+@import "./components/DashBoardCard.scss";
+@import "./components/footer.scss";
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "League Spartan", sans-serif;
+  background-color: #eeeeee;
+  display: grid;
+  place-content: center;
+}
+.main_container {
+  max-width: 380px;
+  padding: 1rem;
+}
