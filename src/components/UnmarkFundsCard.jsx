@@ -1,4 +1,4 @@
-import { Box, Card, Typography } from "@mui/material";
+import { Box, Card, Checkbox, Typography } from "@mui/material";
 import React from "react";
 
 const UnmarkFundsCard = () => {
@@ -13,21 +13,28 @@ const UnmarkFundsCard = () => {
         }}
       >
         <Box
-          sx={{
-            background: "#F6F0FE",
-            width: "24px",
-            height: "24px",
-            border: " 1px solid #C3D0FB",
-            borderRadius: "4px",
-          }}
-        ></Box>
+          // sx={{
+          //   background: "#F6F0FE",
+          //   width: "24px",
+          //   height: "24px",
+          //   border: " 1px solid #C3D0FB",
+          //   borderRadius: "4px",
+          // }}
+        > <Checkbox  sx={{
+          width: "24px",
+             height: "24px",
+          color:"#C3D0FB",
+          '&.Mui-checked': {
+            color: "#5516AA",
+          },
+        }} /></Box>
+        
         <Box>
           <Typography
             sx={{
               fontWeight: "500",
               fontSize: "12px",
               lineHeight: "16px",
-
               color: "#1C1D21",
             }}
           >
