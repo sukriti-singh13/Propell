@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import DashboardCard from "../components/DashboardCard";
 import Footer from "../components/Footer";
+import portfolioValue from "../assets/portfolioValue.svg";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import { Box, Button, Card, Grid, Typography, Stack } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -9,27 +10,28 @@ import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutl
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { styled } from "@mui/system";
 import axios from "axios";
+
 const Dashboard = () => {
   const navigate = useNavigate();
   let [dashboardCardData, setDashboardCardData] = useState([]);
-  let [totalPortfolioValue,setTotalPortfolioValue]=useState(0)
+  let [totalPortfolioValue, setTotalPortfolioValue] = useState(0);
 
   useEffect(() => {
     axios
       .get("https://mocki.io/v1/61a36370-212d-4ac7-baf6-355a14262cb7")
       .then((response) => {
         if (response.status === 200) {
-          setDashboardCardData(response.data.portfolio);       
-           response.data.portfolio.forEach((data) => { setTotalPortfolioValue(totalPortfolioValue +data.current_value)})
+          setDashboardCardData(response.data.portfolio);
+          response.data.portfolio.forEach((data) => {
+            setTotalPortfolioValue(totalPortfolioValue + data.current_value);
+          });
         }
       })
       .catch((err) => {
         console.log(err);
       });
-     
   }, []);
 
-  
   const MyStyledComponent = styled("div")({
     display: "flex",
     flexDirection: "column",
@@ -73,6 +75,7 @@ const Dashboard = () => {
             justifyContent: "center",
             rowGap: "12px",
             padding: "13px",
+            backgroundImage: `url(${portfolioValue})`,
           }}
         >
           <Typography
@@ -86,7 +89,6 @@ const Dashboard = () => {
             Total portfolio value
           </Typography>
           <Typography
-      
             sx={{ fontWeight: "600", fontSize: "24px", color: "#41C0D2" }}
           >
             $ {totalPortfolioValue.toFixed(2)}

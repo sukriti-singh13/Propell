@@ -1,8 +1,6 @@
-import {  Box } from "@mui/material";
+import { Box } from "@mui/material";
 
-
-const Footer = ({children}) => {
- 
+const Footer = ({ children }) => {
   return (
     <Box
       sx={{
@@ -10,10 +8,10 @@ const Footer = ({children}) => {
         width: "100%",
         position: "absolute",
         bottom: "0",
-        left:"0"
+        left: "0",
       }}
     >
-   {children}
+      {children}
     </Box>
   );
 };

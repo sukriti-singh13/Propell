@@ -17,7 +17,9 @@ const UnmarkFunds = () => {
     setOpen(false);
   };
   return (
-    <Box sx={{ padding: "24px 16px",position:"relative", minHeight:"100vh"}}>
+    <Box
+      sx={{ padding: "24px 16px", position: "relative", minHeight: "100vh" }}
+    >
       <Popup
         open={open}
         handleClose={handleClose}
@@ -52,14 +54,13 @@ const UnmarkFunds = () => {
       >
         List of mututal funds-
       </Typography>
-      
+
       <UnmarkFundsCards />
       <UnmarkFundsCards />
       <UnmarkFundsCards />
       <UnmarkFundsCards />
       <UnmarkFundsCards />
-      
-      
+
       <Footer>
         <Box
           sx={{
@@ -98,11 +99,11 @@ const UnmarkFunds = () => {
             fontWeight: "700",
             fontSize: "16px",
             color: "#FFFFFF",
-            margin:"1rem",
-            textTransform:"none",
-            "&:hover ":{
+            margin: "1rem",
+            textTransform: "none",
+            "&:hover ": {
               background: "#EF4F53",
-            }
+            },
           }}
           onClick={handleClickOpen}
         >

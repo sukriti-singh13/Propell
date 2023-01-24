@@ -1,11 +1,8 @@
+import React from "react";
 import { Box, Typography } from "@mui/material";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import React from "react";
-
-
 
 const PortfolioButton = ({ content }) => {
-  
   return (
     <Box
       sx={{
@@ -25,7 +22,6 @@ const PortfolioButton = ({ content }) => {
           fontSize: "16px",
           lineHeight: "16px",
           color: "#5516AA",
-        
         }}
       >
         {content}
@@ -40,7 +36,7 @@ const PortfolioButton = ({ content }) => {
           placeContent: "ceneter",
         }}
       >
-        <NavigateNextIcon sx={{ height: "25px" ,color:"#BC91F6"}} />
+        <NavigateNextIcon sx={{ height: "25px", color: "#BC91F6" }} />
       </Box>
     </Box>
   );

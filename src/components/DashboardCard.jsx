@@ -42,7 +42,7 @@ const DashboardCard = ({ dashboardCardData }) => {
         sx={{
           marginBottom: "100px",
           overflowY: "scroll",
-          maxHeight: "calc(100vh - 450px); ",
+          maxHeight: "calc(100vh - 500px); ",
         }}
       >
         {dashboardCardData &&

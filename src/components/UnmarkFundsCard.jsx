@@ -1,5 +1,5 @@
-import { Box, Card, Checkbox, Typography } from "@mui/material";
 import React from "react";
+import { Box, Card, Checkbox, Typography } from "@mui/material";
 
 const UnmarkFundsCard = () => {
   return (
@@ -12,23 +12,19 @@ const UnmarkFundsCard = () => {
           alignItems: "center",
         }}
       >
-        <Box
-          // sx={{
-          //   background: "#F6F0FE",
-          //   width: "24px",
-          //   height: "24px",
-          //   border: " 1px solid #C3D0FB",
-          //   borderRadius: "4px",
-          // }}
-        > <Checkbox  sx={{
-          width: "24px",
-             height: "24px",
-          color:"#C3D0FB",
-          '&.Mui-checked': {
-            color: "#5516AA",
-          },
-        }} /></Box>
-        
+        <Box>
+          <Checkbox
+            sx={{
+              width: "24px",
+              height: "24px",
+              color: "#C3D0FB",
+              "&.Mui-checked": {
+                color: "#5516AA",
+              },
+            }}
+          />
+        </Box>
+
         <Box>
           <Typography
             sx={{
