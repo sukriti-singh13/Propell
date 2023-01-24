@@ -68,6 +68,10 @@ const Popup = ({ open, handleClose, title, subtitle1, subtitle2 }) => {
               color: "#5516AA",
               backgroundColor: "#E9DCFA",
               borderRadius: "150px",
+              textTransform:"none",
+              "&:hover ":{
+                backgroundColor: "#E9DCFA",
+              }
             }}
             onClick={handleClose}
           >
@@ -83,6 +87,10 @@ const Popup = ({ open, handleClose, title, subtitle1, subtitle2 }) => {
               color: "#ffffff",
               backgroundColor: "#EF4F53",
               borderRadius: "150px",
+              textTransform:"none",
+              "&:hover ":{
+                backgroundColor: "#EF4F53",
+              }
             }}
             onClick={handleClose}
           >

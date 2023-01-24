@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import UnmarkFundsCards from "../components/UnmarkFundsCard.jsx";
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
-import { Box, Typography,Button } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import Popup from "../components/Popup.jsx";
+import Footer from "../components/Footer.jsx";
 const UnmarkFunds = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
@@ -16,10 +17,20 @@ const UnmarkFunds = () => {
     setOpen(false);
   };
   return (
-    <Box className="umarkFunds" sx={{ padding: "24px 16px" }}>
-      <Popup open={open} handleClose={handleClose} title="Are you sure you want to unmark these funds as collateral?" subtitle1="Your Credit line value will decrease" 
-subtitle2="New Credit Line Value ₹ 23000"/>
-      <Box sx={{  "&:hover":{cursor:"pointer"}}} onClick={()=>{navigate("/")}}>
+    <Box sx={{ padding: "24px 16px",position:"relative", minHeight:"100vh"}}>
+      <Popup
+        open={open}
+        handleClose={handleClose}
+        title="Are you sure you want to unmark these funds as collateral?"
+        subtitle1="Your Credit line value will decrease"
+        subtitle2="New Credit Line Value ₹ 23000"
+      />
+      <Box
+        sx={{ "&:hover": { cursor: "pointer" } }}
+        onClick={() => {
+          navigate("/");
+        }}
+      >
         <ArrowBackIosNewOutlinedIcon sx={{ height: "12px" }} />
         Back
       </Box>
@@ -41,14 +52,63 @@ subtitle2="New Credit Line Value ₹ 23000"/>
       >
         List of mututal funds-
       </Typography>
+      
       <UnmarkFundsCards />
       <UnmarkFundsCards />
       <UnmarkFundsCards />
       <UnmarkFundsCards />
       <UnmarkFundsCards />
-      <UnmarkFundsCards />
-      <UnmarkFundsCards />
-      <Button onClick={handleClickOpen}>Unmark funds</Button>
+      
+      
+      <Footer>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            padding: "1rem",
+          }}
+        >
+          <Typography
+            sx={{
+              fontWeight: "500",
+              fontSize: "14px",
+              lineHeight: "16px",
+              color: "#36383F",
+            }}
+          >
+            New Credit Line Value
+          </Typography>
+          <Typography
+            sx={{
+              fontWeight: "500",
+              fontSize: "14px",
+              lineHeight: "16px",
+              color: "#1C1D21",
+            }}
+          >
+            ₹ 23000
+          </Typography>
+        </Box>
+        <Button
+          sx={{
+            width: "310px",
+            height: "48px",
+            background: "#EF4F53",
+            borderRadius: "150px",
+            fontWeight: "700",
+            fontSize: "16px",
+            color: "#FFFFFF",
+            margin:"1rem",
+            textTransform:"none",
+            "&:hover ":{
+              background: "#EF4F53",
+            }
+          }}
+          onClick={handleClickOpen}
+        >
+          Unmark funds
+        </Button>
+      </Footer>
     </Box>
   );
 };

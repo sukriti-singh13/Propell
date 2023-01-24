@@ -1,28 +1,21 @@
-import { Stack,Box } from '@mui/material'
-import React from 'react'
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import PieChartOutlineOutlinedIcon from '@mui/icons-material/PieChartOutlineOutlined';
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-const Footer = () => {
+import {  Box } from "@mui/material";
+
+
+const Footer = ({children}) => {
+ 
   return (
-    <div className="footer">
-        <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{padding:"0px 30px",height: "76px",marginTop:"1rem"}} spacing={4} >
-            <Box className="footer_content">
-                < HomeOutlinedIcon/>
-                Home
-            </Box>
-            <Box className="footer_content">
-                <PieChartOutlineOutlinedIcon/>
-                Portfolio
+    <Box
+      sx={{
+        boxShadow: "0px -4px 10px rgba(85, 22, 170, 0.1)",
+        width: "100%",
+        position: "absolute",
+        bottom: "0",
+        left:"0"
+      }}
+    >
+   {children}
+    </Box>
+  );
+};
 
-            </Box>
-            <Box className="footer_content">
-                <AccountCircleOutlinedIcon/>
-                Profile
-            </Box>
-        </Stack>
-    </div>
-  )
-}
-
-export default Footer
+export default Footer;

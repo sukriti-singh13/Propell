@@ -1,16 +1,54 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DashboardCard from "../components/DashboardCard";
 import Footer from "../components/Footer";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
-import { Box, Button, Card, Grid, Typography } from "@mui/material";
-import { textTransform } from "@mui/system";
+import { Box, Button, Card, Grid, Typography, Stack } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import { styled } from "@mui/system";
+import axios from "axios";
 const Dashboard = () => {
   const navigate = useNavigate();
+  let [dashboardCardData, setDashboardCardData] = useState([]);
+  
+  useEffect(() => {
+    axios
+      .get("https://mocki.io/v1/61a36370-212d-4ac7-baf6-355a14262cb7")
+      .then((response) => {
+        console.log(response)
+        if (response.status === 200) {
+          setDashboardCardData(response.data.portfolio);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+     
+  }, []);
+
+  
+  const MyStyledComponent = styled("div")({
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    rowGap: "6px",
+    color: "#898989",
+    fontWeight: "400",
+    fontSize: "12px",
+    "&:hover": { cursor: "pointer", color: "#5516AA;" },
+  });
+  const H1Styled = styled("h1")({
+    marginTop: "22px",
+    fontWeight: "700",
+    fontSize: "14px",
+    lineHeight: "16px",
+  });
   return (
-    
     <Box sx={{ minHeight: "100vh", position: "relative" }}>
-      <div className="main_container dashboard_layout">
+      <div className="main_container" sx={{ minHeight: "100vh" }}>
         <Box
           sx={{
             display: "flex",
@@ -18,9 +56,9 @@ const Dashboard = () => {
             alignItems: "center",
           }}
         >
-          <h1>
+          <H1Styled>
             <span style={{ color: "#8181A5" }}>Welcome</span> Sukriti
-          </h1>
+          </H1Styled>
           <NotificationsNoneOutlinedIcon
             sx={{ color: "#5516AA", width: "16px" }}
           />
@@ -41,7 +79,6 @@ const Dashboard = () => {
               fontWeight: "500",
               fontSize: "12px",
               lineHeight: "16px",
-
               color: "#696D7C",
             }}
           >
@@ -85,7 +122,7 @@ const Dashboard = () => {
             </Typography>
           </Grid>
           <Button
-          onClick={()=>navigate("/unmarkFunds")}
+            onClick={() => navigate("/unmarkFunds")}
             sx={{
               padding: "8px 12px",
               background: "#E7F7F9",
@@ -96,13 +133,16 @@ const Dashboard = () => {
               color: "#41C0D2",
               textTransform: "none",
               marginLeft: "1rem",
+              "&:hover ": {
+                background: "#E7F7F9",
+              },
             }}
           >
             Learn more
           </Button>
         </Box>
         <Button
-         onClick={()=>navigate("/portfolio")}
+          onClick={() => navigate("/portfolio")}
           sx={{
             width: "100%",
             height: "48px",
@@ -111,13 +151,36 @@ const Dashboard = () => {
             color: "#fff",
             textTransform: "none ",
             marginTop: "16px",
+            "&:hover ": {
+              background: "#5516AA",
+            },
           }}
         >
           Increase credit limit
         </Button>
-        <DashboardCard />
+        <DashboardCard dashboardCardData={dashboardCardData} />
       </div>
-      <Footer />
+      <Footer>
+        <Stack
+          direction="row"
+          justifyContent="space-around"
+          alignItems="center"
+          sx={{ padding: "0px 30px", height: "76px", marginTop: "1rem" }}
+        >
+          <MyStyledComponent>
+            <HomeOutlinedIcon />
+            Home
+          </MyStyledComponent>
+          <MyStyledComponent>
+            <PieChartOutlineOutlinedIcon />
+            Portfolio
+          </MyStyledComponent>
+          <MyStyledComponent>
+            <AccountCircleOutlinedIcon />
+            Profile
+          </MyStyledComponent>
+        </Stack>
+      </Footer>
     </Box>
   );
 };
