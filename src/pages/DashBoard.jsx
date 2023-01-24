@@ -12,14 +12,15 @@ import axios from "axios";
 const Dashboard = () => {
   const navigate = useNavigate();
   let [dashboardCardData, setDashboardCardData] = useState([]);
-  
+  let [totalPortfolioValue,setTotalPortfolioValue]=useState(0)
+
   useEffect(() => {
     axios
       .get("https://mocki.io/v1/61a36370-212d-4ac7-baf6-355a14262cb7")
       .then((response) => {
-        console.log(response)
         if (response.status === 200) {
-          setDashboardCardData(response.data.portfolio);
+          setDashboardCardData(response.data.portfolio);       
+           response.data.portfolio.forEach((data) => { setTotalPortfolioValue(totalPortfolioValue +data.current_value)})
         }
       })
       .catch((err) => {
@@ -85,9 +86,10 @@ const Dashboard = () => {
             Total portfolio value
           </Typography>
           <Typography
+      
             sx={{ fontWeight: "600", fontSize: "24px", color: "#41C0D2" }}
           >
-            ₹ 1500000.00
+            $ {totalPortfolioValue.toFixed(2)}
           </Typography>
         </Card>
         <Box
